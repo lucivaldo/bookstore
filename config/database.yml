@@ -1,3 +1,15 @@
+# PostgreSQL
+postgresql: &postgresql
+  adapter: postgresql
+  host: <%= ENV['DATABASE_HOST'] %>
+  port: <%= ENV['DATABASE_PORT'] %>
+  encoding: utf8
+  database: bookstore_development
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+
+
 # SQLite. Versions 3.8.0 and up are supported.
 #   gem install sqlite3
 #
@@ -10,6 +22,7 @@ default: &default
   timeout: 5000
 
 development:
+  # <<: *postgresql
   <<: *default
   database: storage/development.sqlite3
 
