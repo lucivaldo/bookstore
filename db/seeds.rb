@@ -10,7 +10,7 @@
 
 puts "Geração de autores"
 
-10.times do
+3.times do
   created_at = Faker::Date.between(from: 1.month.ago, to: DateTime.current)
   updated_at = Faker::Date.between(from: created_at, to: DateTime.current)
 
@@ -57,8 +57,8 @@ end
 
 puts "Geração de livros"
 
-50.times do
-  author = Author.order('RANDOM()').first
+4.times do
+  author = Author.where(id: [1, 2]).order('RANDOM()').first
   supplier = Supplier.order('RANDOM()').first
   created_at = Faker::Date.between(from: 1.month.ago, to: DateTime.current)
   updated_at = Faker::Date.between(from: created_at, to: DateTime.current)
