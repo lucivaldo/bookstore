@@ -116,3 +116,12 @@ puts "Geração de avaliações"
     updated_at:
   )
 end
+
+puts "Geração de pedidos de livros"
+
+10.times do
+  BooksOrder.create(
+    book: Book.order('RANDOM()').first,
+    order: Order.order('RANDOM()').first,
+  )
+end

@@ -3,12 +3,13 @@ namespace :scaffold do
   desc "Gera o scaffold inicial da aplicação"
   task generate: :environment do
     scaffold_commands_map = {
-      'Author' => "rails generate scaffold author first_name:string last_name:string title:string",
-      'Book' => "rails generate scaffold book title:string year_published:integer isbn:string 'price:decimal{10,2}' out_of_print:boolean views:integer supplier:references author:references",
-      'Customer' => "rails generate scaffold customer first_name:string last_name:string title:string email:string visits:integer orders_count:integer lock_version:integer",
-      'Order' => "rails generate scaffold order date_submitted:time status:integer 'subtotal:decimal{10,2}' 'shipping:decimal{10,2}' 'tax:decimal{10,2}' 'total:decimal{10,2}' customer:references",
-      'Review' => "rails generate scaffold review title:string body:text rating:integer state:integer customer:references book:references",
-      'Supplier' => "rails generate scaffold supplier name:string"
+      'Author' => "author first_name last_name title",
+      'Supplier' => "supplier name",
+      'Book' => "book title year_published:integer isbn 'price:decimal{10,2}' out_of_print:boolean views:integer supplier:references author:references",
+      'Customer' => "customer first_name last_name title email visits:integer orders_count:integer lock_version:integer",
+      'Order' => "order date_submitted:time status:integer 'subtotal:decimal{10,2}' 'shipping:decimal{10,2}' 'tax:decimal{10,2}' 'total:decimal{10,2}' customer:references",
+      'Review' => "review title body:text rating:integer state:integer customer:references book:references",
+      'Books Orders' => "books_order order:references book:references",
     }
 
     scaffold_commands_map.each do |model, command|
@@ -16,7 +17,7 @@ namespace :scaffold do
       puts model
       puts "-" * 30
 
-      system(command)
+      system("rails g scaffold #{command}")
 
       puts
     end
