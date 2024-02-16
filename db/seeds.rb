@@ -10,7 +10,7 @@
 
 puts "Geração de autores"
 
-3.times do
+20.times do
   created_at = Faker::Date.between(from: 1.month.ago, to: DateTime.current)
   updated_at = Faker::Date.between(from: created_at, to: DateTime.current)
 
@@ -25,7 +25,7 @@ end
 
 puts "Geração de fornecedores"
 
-15.times do
+30.times do
   created_at = Faker::Date.between(from: 1.month.ago, to: DateTime.current)
   updated_at = Faker::Date.between(from: created_at, to: DateTime.current)
 
@@ -38,7 +38,7 @@ end
 
 puts "Geração de clientes"
 
-30.times do
+50.times do
   created_at = Faker::Date.between(from: 1.month.ago, to: DateTime.current)
   updated_at = Faker::Date.between(from: created_at, to: DateTime.current)
 
@@ -57,7 +57,7 @@ end
 
 puts "Geração de livros"
 
-4.times do
+100.times do
   author = Author.where(id: [1, 2]).order('RANDOM()').first
   supplier = Supplier.order('RANDOM()').first
   created_at = Faker::Date.between(from: 1.month.ago, to: DateTime.current)
@@ -119,7 +119,7 @@ end
 
 puts "Geração de pedidos de livros"
 
-10.times do
+50.times do
   BooksOrder.create(
     book: Book.order('RANDOM()').first,
     order: Order.order('RANDOM()').first,
